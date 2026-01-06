@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Tailwind output -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='output.css') }}">
+</head>
+
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+  <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md">
+
+    <h2 class="text-2xl font-bold text-center mb-6">
+      Create Account
+    </h2>
+
+    <form method="post" class="space-y-4">
+
+      <!-- USER ID -->
+      <input
+        type="text"
+        name="user_id"
+        placeholder="User ID"
+        required
+        class="w-full border border-gray-300 rounded-lg px-4 py-2
+               focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+      <!-- NAME -->
+      <input
+        type="text"
+        name="user_name"
+        placeholder="Name"
+        required
+        class="w-full border border-gray-300 rounded-lg px-4 py-2
+               focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+      <!-- EMAIL -->
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        required
+        class="w-full border border-gray-300 rounded-lg px-4 py-2
+               focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+      <!-- PASSWORD -->
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        required
+        class="w-full border border-gray-300 rounded-lg px-4 py-2
+               focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+      <!-- ROLE -->
+      <select
+        name="role"
+        id="role"
+        onchange="toggleAdminKey()"
+        required
+        class="w-full border border-gray-300 rounded-lg px-4 py-2
+               focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+        <option value="">Select Role</option>
+        <option value="STUDENT">Student</option>
+        <option value="ADMIN">Admin</option>
+      </select>
+
+      <!-- ADMIN SECRET KEY -->
+      <div id="adminKeyField" class="hidden">
+        <input
+          type="password"
+          name="admin_key"
+          placeholder="Admin Secret Key"
+          class="w-full border border-gray-300 rounded-lg px-4 py-2
+                 focus:outline-none focus:ring-2 focus:ring-red-500">
+      </div>
+
+      <!-- SUBMIT -->
+      <button
+        type="submit"
+        class="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold
+               hover:bg-blue-700 transition">
+        Register
+      </button>
+
+    </form>
+
+    <!-- LOGIN LINK -->
+    <p class="text-center text-sm text-gray-600 mt-4">
+      Already have an account?
+      <a href="/login" class="text-blue-600 hover:underline">
+        Login
+      </a>
+    </p>
+
+  </div>
+
+  <!-- TOGGLE SCRIPT -->
+  <script>
+    function toggleAdminKey() {
+      const role = document.getElementById("role").value;
+      const adminField = document.getElementById("adminKeyField");
+
+      if (role === "ADMIN") {
+        adminField.classList.remove("hidden");
+      } else {
+        adminField.classList.add("hidden");
+      }
+    }
+  </script>
+
+</body>
+</html>

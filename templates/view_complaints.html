@@ -1,0 +1,59 @@
+{% extends "student_base.html" %}
+
+{% block title %}My Complaints{% endblock %}
+
+{% block content %}
+
+<div class="bg-white p-8 rounded-2xl shadow-xl">
+
+  <h2 class="text-2xl font-bold mb-6 text-center animate-fade-in">
+    📋 My Complaints
+  </h2>
+
+  <table class="w-full border-collapse">
+    <thead>
+      <tr class="bg-gray-200">
+        <th class="p-3 border">ID</th>
+        <th class="p-3 border">Hostel</th>
+        <th class="p-3 border">Room </th>
+        <th class="p-3 border">Category</th>
+        <th class="p-3 border">Description</th>
+        <th class="p-3 border">Status</th>
+        <th class="p-3 border">Remark</th>
+
+      </tr>
+    </thead>
+
+  <tbody>
+  {% for c in complaints %}
+  <tr class="text-center hover:bg-gray-50 transition">
+
+    <td class="p-3 border">{{ c.complaint_id }}</td>
+    <td class="p-3 border">{{ c.hostel }}</td>
+    <td class="p-3 border">{{ c.room_no }}</td>
+    <td class="p-3 border">{{ c.category }}</td>
+    <td class="p-3 border">{{ c.description }}</td>
+
+    <td class="p-3 border">
+      {{ c.status }}
+    </td>
+
+    <td class="p-3 border">
+      {{ c.admin_remark or "-" }}
+    </td>
+
+  </tr>
+  {% else %}
+  <tr>
+    <td colspan="7" class="p-6 text-center text-gray-500">
+      No complaints found
+    </td>
+  </tr>
+  {% endfor %}
+</tbody>
+
+  </table>
+
+</div>
+
+{% endblock %}

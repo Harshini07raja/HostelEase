@@ -1,0 +1,85 @@
+{% extends "student_base.html" %}
+
+{% block title %}Apply Outpass{% endblock %}
+
+{% block content %}
+
+<div class="max-w-xl mx-auto bg-white p-8 rounded-2xl shadow-xl
+            transform transition-all duration-500 hover:scale-[1.01]">
+
+  <h2 class="text-2xl font-bold mb-6 text-center animate-fade-in">
+    🚪 Apply for Outpass
+  </h2>
+
+  <form method="post" class="space-y-5" onsubmit="return validateDates()">
+
+    <!-- FROM DATE -->
+    <div>
+      <label class="block text-sm font-semibold mb-1">From Date</label>
+      <input type="date" id="from_date" name="from_date" required
+        class="w-full border rounded-lg px-4 py-2
+               focus:ring-2 focus:ring-blue-500">
+    </div>
+
+    <!-- TO DATE -->
+    <div>
+      <label class="block text-sm font-semibold mb-1">To Date</label>
+      <input type="date" id="to_date" name="to_date" required
+        class="w-full border rounded-lg px-4 py-2
+               focus:ring-2 focus:ring-blue-500">
+    </div>
+
+    <!-- REASON -->
+    <div>
+      <label class="block text-sm font-semibold mb-1">Reason</label>
+      <textarea name="reason" rows="3" required
+        placeholder="Enter reason for outpass"
+        class="w-full border rounded-lg px-4 py-2
+               focus:ring-2 focus:ring-blue-500"></textarea>
+    </div>
+
+    <!-- ERROR MESSAGE -->
+    <p id="dateError" class="text-red-500 text-sm hidden"></p>
+
+    <!-- SUBMIT -->
+    <button
+      class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold
+             hover:bg-blue-700
+             transform hover:scale-105
+             transition-all duration-300
+             shadow-lg hover:shadow-xl">
+      Submit Request
+    </button>
+
+  </form>
+
+</div>
+
+<!-- SCRIPT MUST BE INSIDE BLOCK -->
+<script>
+function validateDates() {
+  const fromDate = new Date(document.getElementById("from_date").value);
+  const toDate = new Date(document.getElementById("to_date").value);
+  const today = new Date();
+  today.setHours(0,0,0,0);
+
+  const error = document.getElementById("dateError");
+
+  if (fromDate < today) {
+    error.innerText = "From date cannot be in the past.";
+    error.classList.remove("hidden");
+    return false;
+  }
+
+  if (toDate < fromDate) {
+    error.innerText = "To date cannot be before From date.";
+    error.classList.remove("hidden");
+    return false;
+  }
+
+  error.classList.add("hidden");
+  return true;
+}
+</script>
+
+{% endblock %}

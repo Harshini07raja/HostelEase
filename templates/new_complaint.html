@@ -1,0 +1,72 @@
+{% extends "student_base.html" %}
+
+{% block title %}Raise Complaint{% endblock %}
+
+{% block content %}
+
+<div class="max-w-xl mx-auto bg-white p-8 rounded-2xl shadow-xl
+            transform transition-all duration-500 hover:scale-[1.01]">
+
+  <h2 class="text-2xl font-bold mb-6 text-center animate-fade-in">
+    🛠 Raise a Complaint
+  </h2>
+
+  <form method="post" class="space-y-5">
+
+    <!-- HOSTEL -->
+    <div>
+      <label class="block text-sm font-semibold mb-1">Hostel</label>
+      <input type="text" name="hostel" required
+        placeholder="e.g. Boys Hostel A"
+        class="w-full border rounded-lg px-4 py-2
+               focus:outline-none focus:ring-2 focus:ring-blue-500">
+    </div>
+
+    <!-- ROOM NUMBER -->
+    <div>
+      <label class="block text-sm font-semibold mb-1">Room Number</label>
+      <input type="text" name="room_no" required
+        placeholder="e.g. 204"
+        class="w-full border rounded-lg px-4 py-2
+               focus:outline-none focus:ring-2 focus:ring-blue-500">
+    </div>
+
+    <!-- CATEGORY -->
+    <div>
+      <label class="block text-sm font-semibold mb-1">Category</label>
+      <select name="category" required
+        class="w-full border rounded-lg px-4 py-2
+               focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <option value="">Select Category</option>
+        <option>Electricity</option>
+        <option>Water</option>
+        <option>Room Cleaning</option>
+        <option>Food</option>
+        <option>Others</option>
+      </select>
+    </div>
+
+    <!-- DESCRIPTION -->
+    <div>
+      <label class="block text-sm font-semibold mb-1">Description</label>
+      <textarea name="description" rows="4" required
+        placeholder="Describe the issue clearly..."
+        class="w-full border rounded-lg px-4 py-2
+               focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+    </div>
+
+    <!-- SUBMIT -->
+    <button
+      class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold
+             hover:bg-blue-700
+             transform hover:scale-105
+             transition-all duration-300
+             shadow-lg hover:shadow-xl">
+      Submit Complaint
+    </button>
+
+  </form>
+
+</div>
+
+{% endblock %}

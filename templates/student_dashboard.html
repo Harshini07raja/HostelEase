@@ -1,0 +1,86 @@
+{% extends "student_base.html" %}
+
+{% block title %}Student Dashboard{% endblock %}
+
+{% block content %}
+
+<!-- Welcome -->
+<h2 class="text-3xl font-bold mb-10 text-center animate-fade-in">
+  Welcome, {{ name }} 👋
+</h2>
+
+<!-- OUTPASS SECTION -->
+<div class="mb-10">
+  <h3 class="text-xl font-semibold mb-4 text-gray-700">
+    🚪 Outpass Management
+  </h3>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+    <!-- Apply Outpass -->
+    <a href="/student/outpass/apply"
+       class="bg-blue-500 text-white p-6 rounded-xl font-semibold
+              transform transition-all duration-300
+              hover:scale-105 hover:bg-blue-600
+              shadow-md hover:shadow-xl">
+
+      <div class="text-3xl mb-2">Apply Outpass</div>
+      <p class="text-sm opacity-90">
+        Request permission to leave hostel
+      </p>
+    </a>
+
+    <!-- View Outpass -->
+    <a href="/student/outpass"
+       class="bg-blue-100 text-blue-700 p-6 rounded-xl font-semibold
+              transform transition-all duration-300
+              hover:scale-105 hover:bg-blue-200
+              shadow-md hover:shadow-xl">
+
+      <div class="text-3xl mb-2">My Outpass Requests</div>
+      <p class="text-sm opacity-80">
+        View status of your outpasses
+      </p>
+    </a>
+
+  </div>
+</div>
+
+<!-- COMPLAINT SECTION -->
+<div>
+  <h3 class="text-xl font-semibold mb-4 text-gray-700">
+    🛠 Complaint Desk
+  </h3>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+    <!-- New Complaint -->
+    <a href="/student/complaint/new"
+       class="bg-yellow-500 text-white p-6 rounded-xl font-semibold
+              transform transition-all duration-300
+              hover:scale-105 hover:bg-yellow-600
+              shadow-md hover:shadow-xl">
+
+      <div class="text-3xl mb-2">Raise Complaint</div>
+      <p class="text-sm opacity-90">
+        Report hostel-related issues
+      </p>
+    </a>
+
+    <!-- View Complaints -->
+    <a href="/student/complaints"
+       class="bg-yellow-100 text-yellow-700 p-6 rounded-xl font-semibold
+              transform transition-all duration-300
+              hover:scale-105 hover:bg-yellow-200
+              shadow-md hover:shadow-xl">
+
+      <div class="text-3xl mb-2">My Complaints</div>
+      <p class="text-sm opacity-80">
+        Track complaint status & responses
+      </p>
+    </a>
+
+  </div>
+</div>
+
+{% endblock %}

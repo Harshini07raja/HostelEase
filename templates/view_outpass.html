@@ -1,0 +1,87 @@
+{% extends "student_base.html" %}
+
+{% block title %}My Outpass Requests{% endblock %}
+
+{% block content %}
+
+<div class="bg-white p-8 rounded-2xl shadow-xl">
+
+  <h2 class="text-2xl font-bold mb-6 text-center animate-fade-in">
+    📄 My Outpass Requests
+  </h2>
+
+  <div class="overflow-x-auto">
+    <table class="w-full border-collapse">
+      <thead>
+        <tr class="bg-gray-200 text-gray-700">
+          <th class="p-3 border">Outpass ID</th>
+          <th class="p-3 border">From</th>
+          <th class="p-3 border">To</th>
+          <th class="p-3 border">Reason</th>
+          <th class="p-3 border">Status</th>
+          <th class="p-3 border">Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for r in requests %}
+        <tr class="text-center hover:bg-gray-50 transition">
+
+          <td class="p-3 border">{{ r.outpass_id }}</td>
+          <td class="p-3 border">{{ r.from_date }}</td>
+          <td class="p-3 border">{{ r.to_date }}</td>
+          <td class="p-3 border">{{ r.reason }}</td>
+
+          <!-- STATUS -->
+          <td class="p-3 border">
+            {% if r.status == 'PENDING' %}
+              <span class="px-3 py-1 rounded-full text-sm font-semibold
+                           bg-yellow-100 text-yellow-700 animate-pulse">
+                Pending
+              </span>
+            {% elif r.status == 'APPROVED' %}
+              <span class="px-3 py-1 rounded-full text-sm font-semibold
+                           bg-green-100 text-green-700">
+                Approved
+              </span>
+            {% else %}
+              <span class="px-3 py-1 rounded-full text-sm font-semibold
+                           bg-red-100 text-red-700">
+                Rejected
+              </span>
+            {% endif %}
+          </td>
+
+          <!-- ACTION -->
+          <td class="p-3 border">
+            {% if r.status == 'PENDING' %}
+            <form method="post" action="/student/outpass/cancel/{{ r.outpass_id }}">
+              <button
+                class="bg-red-500 text-white px-4 py-1 rounded
+                       hover:bg-red-600
+                       transform hover:scale-105
+                       transition-all duration-300
+                       shadow hover:shadow-lg">
+                Cancel
+              </button>
+            </form>
+            {% else %}
+              —
+            {% endif %}
+          </td>
+
+        </tr>
+        {% else %}
+        <tr>
+          <td colspan="6" class="p-6 text-center text-gray-500">
+            No outpass requests found
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+{% endblock %}

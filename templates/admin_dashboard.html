@@ -1,0 +1,53 @@
+{% extends "admin_base.html" %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+
+<h2 class="text-3xl font-bold mb-8 text-center">
+  Welcome Admin 👮
+</h2>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+  <!-- Pending Outpasses -->
+  <div class="bg-blue-500 text-white p-8 rounded-2xl shadow-lg
+              transform transition hover:scale-105">
+
+    <h3 class="text-xl font-semibold mb-2">
+      Pending Outpass Requests
+    </h3>
+
+    <p class="text-5xl font-bold mb-4">
+      {{ pending_outpasses }}
+    </p>
+
+    <a href="/admin/outpasses"
+       class="inline-block bg-white text-blue-600 px-5 py-2 rounded
+              font-semibold hover:bg-gray-100 transition">
+      View Requests
+    </a>
+  </div>
+
+  <!-- Open Complaints -->
+  <div class="bg-yellow-500 text-white p-8 rounded-2xl shadow-lg
+              transform transition hover:scale-105">
+
+    <h3 class="text-xl font-semibold mb-2">
+      Open Complaints
+    </h3>
+
+    <p class="text-5xl font-bold mb-4">
+      {{ open_complaints }}
+    </p>
+
+    <a href="/admin/complaints"
+       class="inline-block bg-white text-yellow-700 px-5 py-2 rounded
+              font-semibold hover:bg-gray-100 transition">
+      View Complaints
+    </a>
+  </div>
+
+</div>
+
+{% endblock %}

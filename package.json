@@ -1,0 +1,17 @@
+{
+  "name": "hostel-outpass",
+  "version": "1.0.0",
+  "description": "Roles:\r 1. Student – raises complaints and applies for outpass\r 2. Admin (Warden) – manages complaints and approves outpass",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build":"npx tailwindcss  -i ./src/input.css -o ./static/output.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}

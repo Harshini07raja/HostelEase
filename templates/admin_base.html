@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}Admin{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='output.css') }}">
+</head>
+
+<body class="bg-gray-100 min-h-screen">
+
+<!-- Navbar -->
+<nav class="bg-gray-800 text-white px-6 py-4 flex justify-between items-center shadow-md">
+  <h1 class="text-xl font-bold">Hostel Admin Panel</h1>
+
+  <div class="space-x-6">
+    <a href="/admin/dashboard" class="hover:underline">Dashboard</a>
+    <a href="/admin/outpasses" class="hover:underline">Outpasses</a>
+    <a href="/admin/complaints" class="hover:underline">Complaints</a>
+    
+    <a href="/logout"
+       class="bg-red-500 px-4 py-2 rounded hover:bg-red-600 transition">
+      Logout
+    </a>
+  </div>
+</nav>
+
+<div class="max-w-7xl mx-auto mt-10 px-4">
+  {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>
